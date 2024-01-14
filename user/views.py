@@ -42,6 +42,6 @@ def owner_create(request):
     
 @api_view(['GET'])
 def group_list(request):
-    group_objs = Group.objects.all()
+    group_objs = Group.objects.all().exclude(name='Owner')
     serializer = GroupSerializer(group_objs,many=True)
     return Response(serializer.data)
